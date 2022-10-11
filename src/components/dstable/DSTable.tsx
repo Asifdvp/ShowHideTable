@@ -181,27 +181,21 @@ export default function DSTable() {
             <TableCell align="right">Rayon</TableCell>
             <TableCell align="right">
               <FormControl>
+              <ShowIcon  onClick={handleCLick} />
                 <Select
                   native={false}
                   open={open}
                   onOpen={ handleCLick}
                   onClose={handleCLick}
-                  //  onOpen={onOpen}
-                  //  onClose={onClose}
-                  // onClick={handleCLick}
-                
                   multiple
                   value={personName}
-                  onChange={handleChange}
-                  // input={<ShowIcon/>}
-                  //  IconComponent={ShowIcon}
-                  // IconComponent={ShowIcon}
-                  // inputComponent={<ShowIcon onClick={handleCLick} />}
+                  onChange={handleChange}       
+                    IconComponent={ShowIcon}
                   renderValue={() => null}
-                   input={<OutlinedInput label="Tag" />}
+                   input={<OutlinedInput  sx={{position:"absolute",width:0,height:0}}/>}
                   MenuProps={MenuProps}
-                  // SelectDisplayProps={<ShowIcon/>}
                 >
+                 
                   {names.map((name) => (
                     <MenuItem key={name} value={name} >
                       <Checkbox checked={personName.indexOf(name) > -1} />
@@ -209,7 +203,7 @@ export default function DSTable() {
                     </MenuItem>
                   ))}
                 </Select>
-                <ShowIcon onClick={handleCLick} />
+               
               </FormControl>
             </TableCell>
           </TableRow>

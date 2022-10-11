@@ -15,7 +15,24 @@ font-size: 16px;
 line-height: 21px;
 border: none;
 text-align: left;
-
+.MuiFormControl-root{
+    .MuiOutlinedInput-root{
+        .MuiSelect-outlined{
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+        }
+        background-color: yellow;
+        .MuiOutlinedInput-notchedOutline{
+            border: none;
+            outline: none;
+            width:0;
+            height:0;
+        
+        }
+    }
+}
                 }
             }
         }

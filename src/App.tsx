@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import './App.css';
-import Asif from './components/dstable/Asif';
+
 import DSTable from './components/dstable/DSTable';
 
 function App() {
