@@ -1,0 +1,42 @@
+.MuiPaper-root.dstable-root{
+    width: auto;
+    max-width:1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    .MuiTable-root{
+        .MuiTableHead-root{
+            .MuiTableRow-root{
+                .MuiTableCell-root.MuiTableCell-head{
+color: #00B3FF;
+font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 21px;
+border: none;
+text-align: left;
+
+                }
+            }
+        }
+        .MuiTableBody-root{
+            .MuiTableRow-root{
+               
+                  &:nth-child(odd){
+                    background-color: #F4FAFF; 
+                 }
+                .MuiTableCell-root.MuiTableCell-body{
+                    border: none;
+                    color: rgba(6, 6, 6, 0.8);
+                    font-family: 'Nunito Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 21px;
+                    
+                  text-align: left;
+                }
+            }
+        }
+    }
+}
