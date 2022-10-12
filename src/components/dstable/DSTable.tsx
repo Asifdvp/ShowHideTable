@@ -21,14 +21,17 @@ import TextField from "@mui/material/TextField";
 
 /* Functions */
 function createData(
-  id: number,
-  name: string,
-  calories: string,
-  fat: string,
-  carbs: string,
-  protein: string
+  id: any,
+  dateTime: any,
+  kys: any,
+  doctor: any,
+  fin: any,
+  pname: any,
+  psurname: any,
+  address: any,
+  city: any
 ) {
-  return { id, name, calories, fat, carbs, protein };
+  return { id, dateTime, kys, doctor, fin, pname, psurname, address, city };
 }
 
 const ITEM_HEIGHT = 48;
@@ -43,189 +46,62 @@ const MenuProps = {
   },
 };
 
-const names = [
-  { id: 1, name: "Tarix aralığı",checked:true },
-  { id: 2, name: "KYS" ,checked:true},
-  { id: 3, name: "Həkim",checked:true },
-  { id: 4, name: "FİN",checked:true },
-  { id: 6, name: "Pasientin adı" ,checked:true},
-  { id: 7, name: "Pasientin soyadı",checked:true },
-  { id: 8, name: "Çağırış ünvanı",checked:true },
-  { id: 9, name: "Rayon",checked:true },
-];
-
 export default function DSTable() {
-  const [rows, setRows] = React.useState<any>([
-    createData(
-      1,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      2,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      3,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      4,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      5,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      6,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      7,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      8,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      9,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      10,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-    createData(
-      11,
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı",
-      "Sura Suralı"
-    ),
-  ]);
-  const [names,setNames] = React.useState<any>([
-    { id: 1, name: "Tarix aralığı",checked:true },
-    { id: 2, name: "KYS" ,checked:true},
-    { id: 3, name: "Həkim",checked:true },
-    { id: 4, name: "FİN",checked:true },
-    { id: 6, name: "Pasientin adı" ,checked:true},
-    { id: 7, name: "Pasientin soyadı",checked:true },
-    { id: 8, name: "Çağırış ünvanı",checked:true },
-    { id: 9, name: "Rayon",checked:true },
-  ]);
-  const [thead,setThead] = React.useState(names);
-  // const [thead, setThead] = React.useState([
-  //   { id: 1, name: "Tarix aralığı" },
-  //   { id: 2, name: "KYS" },
-  //   { id: 3, name: "Həkim" },
-  //   { id: 4, name: "FİN" },
-  //   { id: 6, name: "Pasientin adı" },
-  //   { id: 7, name: "Pasientin soyadı" },
-  //   { id: 8, name: "Çağırış ünvanı" },
-  //   { id: 9, name: "Rayon" },
-  // ]);
+  const [rows, setRows] = React.useState<any>(body);
+
+  const [names, setNames] = React.useState<any>(head);
+  const [thead, setThead] = React.useState(head);
+
   const [personName, setPersonName] = React.useState<string[]>([]);
   const [open, setOpen] = React.useState(false);
 
-  const handleChange = (event: SelectChangeEvent<any>) => {
-  
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-    // console.log(personName);
-    // console.log(value);
-    //Rows filter function
-    const new_row = rows.filter((row: any) => {});
-console.log(value);
-setThead(value)
-names.map((item:any)=>{
-  
-})
-
-//     const new_head = names.map((head: any) => {
-//       if (value.length > 0) {
-//         value.filter((item: any) => {
-//           if (head.id === item.id) {
-// const arr = [];
-// arr.push(head);
-// console.log(arr);
-
-//             setThead([head])
-         
-//           }
-//         });
-//       } else {
-//         setThead(names);
-//       }
-//     });
-
-
+  const handleChange = (id: number) => {
+    setThead((prev: any) => {
+      return prev.map((item: any) => {
+        if (item.id === id) {
+          return { ...item, checked: !item.checked };
+        }
+        return item;
+      });
+    });
   };
+
   const handleShowHideColumn: any = () => {
     setOpen(!open);
   };
-   const handleChang = (event:any)=>{
- console.log(event.target);
-// event.target.cheecked=false
 
-   }
+  const hiddenRows = React.useMemo(() => {
+    const fieldNames = thead
+      .filter((item) => !item.checked)
+      .map((item) => item.fieldName);
+    const newRows = JSON.parse(JSON.stringify(rows));
+    return newRows.map((row: any) => {
+      fieldNames.forEach((element) => {
+        if (row[element]) {
+          delete row[element];
+        }
+      });
+      return row;
+    });
+  }, [rows, thead]);
+  console.log("hiddenRows", hiddenRows);
+  console.log("rows", rows);
+
   return (
     <TableContainer component={Paper} className="dstable-root">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {thead.map((item: any) => (
-              <TableCell key={item.id} align="right">
-                {item.name}
-              </TableCell>
-            ))}
-   
+            {thead.map((item: any) => {
+              if (item.checked === true) {
+                return (
+                  <TableCell key={item.id} align="right">
+                    {item.name}
+                  </TableCell>
+                );
+              }
+            })}
+
             <TableCell align="right">
               <FormControl>
                 <Select
@@ -234,7 +110,6 @@ names.map((item:any)=>{
                   onClose={handleShowHideColumn}
                   multiple
                   value={personName}
-                  onChange={handleChange}
                   IconComponent={function () {
                     return <ShowIcon onClick={handleShowHideColumn} />;
                   }}
@@ -242,10 +117,13 @@ names.map((item:any)=>{
                   input={<OutlinedInput />}
                   MenuProps={MenuProps}
                 >
-                  {names.map((name: any) => (
+                  {thead.map((name: any) => (
                     <MenuItem key={name.id} value={name}>
-                       {/* checked={personName.indexOf(name) > -1} */}
-                      <Checkbox checked={personName.indexOf(name) > -1} />
+                      {/* checked={personName.indexOf(name) > -1} */}
+                      <Checkbox
+                        checked={name.checked}
+                        onChange={() => handleChange(name.id)}
+                      />
                       <ListItemText primary={name.name} />
                     </MenuItem>
                   ))}
@@ -255,26 +133,71 @@ names.map((item:any)=>{
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row: any) => (
-            <TableRow
-              key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          ))}
+          {hiddenRows.map((item: any, index: any) => {
+            return (
+              <TableRow
+                key={item.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                {Object.keys(item).map((j: any, i: any) => {
+                  if (j !== "id") {
+                    return (
+                      <TableCell align="right" key={i}>
+                        {item[j]}
+                      </TableCell>
+                    );
+                  }
+                })}
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+const head = [
+  { id: 1, name: "Tarix aralığı", checked: true, fieldName: "dateTime" },
+  { id: 2, name: "KYS", checked: true, fieldName: "kys" },
+  { id: 3, name: "Həkim", checked: true, fieldName: "doctor" },
+  { id: 4, name: "FİN", checked: true, fieldName: "fin" },
+  { id: 6, name: "Pasientin adı", checked: true, fieldName: "pname" },
+  { id: 7, name: "Pasientin soyadı", checked: true, fieldName: "psurname" },
+  { id: 8, name: "Çağırış ünvanı", checked: true, fieldName: "address" },
+  { id: 9, name: "Rayon", checked: true, fieldName: "city" },
+];
+const body = [
+  {
+    id: 1,
+    dateTime: "22.11.2020",
+    kys: 1,
+    doctor: "Xasay",
+    fin: "45345345",
+    pname: "AAAAA",
+    psurname: "sdsdsdsd",
+    address: "Baku",
+    city: "Zaqatala",
+  },
+  {
+    id: 2,
+    dateTime: "22.11.2020",
+    kys: 2,
+    doctor: "Xasay",
+    fin: "45345345",
+    pname: "AAAAA",
+    psurname: "sdsdsdsd",
+    address: "Baku",
+    city: "Zaqatala",
+  },
+  {
+    id: 3,
+    dateTime: "22.11.2020",
+    kys: 3,
+    doctor: "Xasay",
+    fin: "45345345",
+    pname: "AAAAA",
+    psurname: "sdsdsdsd",
+    address: "Baku",
+    city: "Zaqatala",
+  },
+];
