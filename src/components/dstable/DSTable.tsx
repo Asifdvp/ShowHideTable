@@ -15,9 +15,11 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { ListItemIcon } from "@mui/material";
+import { InputAdornment, ListItemIcon } from "@mui/material";
 import TextField from "@mui/material/TextField";
+/* Imports */
 
+/* Functions */
 function createData(
   id: number,
   name: string,
@@ -31,6 +33,7 @@ function createData(
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
+// Drowdown menu css
 const MenuProps = {
   PaperProps: {
     style: {
@@ -41,119 +44,133 @@ const MenuProps = {
 };
 
 const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
-
-const rows = [
-  createData(
-    1,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    2,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    3,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    4,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    5,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    6,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    7,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    8,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    9,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    10,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
-  createData(
-    11,
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı",
-    "Sura Suralı"
-  ),
+  { id: 1, name: "Tarix aralığı",checked:true },
+  { id: 2, name: "KYS" ,checked:true},
+  { id: 3, name: "Həkim",checked:true },
+  { id: 4, name: "FİN",checked:true },
+  { id: 6, name: "Pasientin adı" ,checked:true},
+  { id: 7, name: "Pasientin soyadı",checked:true },
+  { id: 8, name: "Çağırış ünvanı",checked:true },
+  { id: 9, name: "Rayon",checked:true },
 ];
 
 export default function DSTable() {
-  const showHideTableColumn = () => {
-    console.log("ShowHideColumnEvent");
-    setOpen(!open);
-    console.log(open);
-  };
+  const [rows, setRows] = React.useState<any>([
+    createData(
+      1,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      2,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      3,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      4,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      5,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      6,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      7,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      8,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      9,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      10,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+    createData(
+      11,
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı",
+      "Sura Suralı"
+    ),
+  ]);
+  const [names,setNames] = React.useState<any>([
+    { id: 1, name: "Tarix aralığı",checked:true },
+    { id: 2, name: "KYS" ,checked:true},
+    { id: 3, name: "Həkim",checked:true },
+    { id: 4, name: "FİN",checked:true },
+    { id: 6, name: "Pasientin adı" ,checked:true},
+    { id: 7, name: "Pasientin soyadı",checked:true },
+    { id: 8, name: "Çağırış ünvanı",checked:true },
+    { id: 9, name: "Rayon",checked:true },
+  ]);
+  const [thead,setThead] = React.useState(names);
+  // const [thead, setThead] = React.useState([
+  //   { id: 1, name: "Tarix aralığı" },
+  //   { id: 2, name: "KYS" },
+  //   { id: 3, name: "Həkim" },
+  //   { id: 4, name: "FİN" },
+  //   { id: 6, name: "Pasientin adı" },
+  //   { id: 7, name: "Pasientin soyadı" },
+  //   { id: 8, name: "Çağırış ünvanı" },
+  //   { id: 9, name: "Rayon" },
+  // ]);
   const [personName, setPersonName] = React.useState<string[]>([]);
   const [open, setOpen] = React.useState(false);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<any>) => {
+  
     const {
       target: { value },
     } = event;
@@ -161,55 +178,84 @@ export default function DSTable() {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    // console.log(personName);
+    // console.log(value);
+    //Rows filter function
+    const new_row = rows.filter((row: any) => {});
+console.log(value);
+setThead(value)
+names.map((item:any)=>{
+  
+})
+
+//     const new_head = names.map((head: any) => {
+//       if (value.length > 0) {
+//         value.filter((item: any) => {
+//           if (head.id === item.id) {
+// const arr = [];
+// arr.push(head);
+// console.log(arr);
+
+//             setThead([head])
+         
+//           }
+//         });
+//       } else {
+//         setThead(names);
+//       }
+//     });
+
+
   };
-  const handleCLick:any = () => {
+  const handleShowHideColumn: any = () => {
     setOpen(!open);
-    console.log(open);
   };
+   const handleChang = (event:any)=>{
+ console.log(event.target);
+// event.target.cheecked=false
+
+   }
   return (
     <TableContainer component={Paper} className="dstable-root">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Tarix aralığı</TableCell>
-            <TableCell align="right">KYS</TableCell>
-            <TableCell align="right">Həkim</TableCell>
-            <TableCell align="right">FİN</TableCell>
-            <TableCell align="right">Pasientin adı</TableCell>
-            <TableCell align="right">Pasientin soyadı</TableCell>
-            <TableCell align="right">Çağırış ünvanı</TableCell>
-            <TableCell align="right">Rayon</TableCell>
+            {thead.map((item: any) => (
+              <TableCell key={item.id} align="right">
+                {item.name}
+              </TableCell>
+            ))}
+   
             <TableCell align="right">
               <FormControl>
-              <ShowIcon  onClick={handleCLick} />
                 <Select
                   native={false}
                   open={open}
-                  onOpen={ handleCLick}
-                  onClose={handleCLick}
+                  onClose={handleShowHideColumn}
                   multiple
                   value={personName}
-                  onChange={handleChange}       
-                    IconComponent={ShowIcon}
+                  onChange={handleChange}
+                  IconComponent={function () {
+                    return <ShowIcon onClick={handleShowHideColumn} />;
+                  }}
                   renderValue={() => null}
-                   input={<OutlinedInput  sx={{position:"absolute",width:0,height:0}}/>}
+                  input={<OutlinedInput />}
                   MenuProps={MenuProps}
                 >
-                 
-                  {names.map((name) => (
-                    <MenuItem key={name} value={name} >
+                  {names.map((name: any) => (
+                    <MenuItem key={name.id} value={name}>
+                       {/* checked={personName.indexOf(name) > -1} */}
                       <Checkbox checked={personName.indexOf(name) > -1} />
-                      <ListItemText primary={name} />
+                      <ListItemText primary={name.name} />
                     </MenuItem>
                   ))}
                 </Select>
-               
               </FormControl>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row: any) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
