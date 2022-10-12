@@ -64,6 +64,17 @@ export default function DSTable() {
         return item;
       });
     });
+    setNames((prev: any) => {
+      return prev.map((item: any) => {
+       if (item.id === id) {
+          return { ...item, checked: !item.checked };
+        }
+        return item;
+      });
+    }); 
+
+    
+
   };
 
   const handleShowHideColumn: any = () => {
@@ -83,9 +94,13 @@ export default function DSTable() {
       });
       return row;
     });
+   
   }, [rows, thead]);
-  console.log("hiddenRows", hiddenRows);
-  console.log("rows", rows);
+// React.useEffect(()=>{
+//   const newThead = thead.filter((item:any)=>item.checked === true);
+//   localStorage.setItem("user",JSON.stringify(thead));
+//  const  localStorage.getItem('user')
+// },[hiddenRows])
 
   return (
     <TableContainer component={Paper} className="dstable-root">
@@ -117,7 +132,7 @@ export default function DSTable() {
                   input={<OutlinedInput />}
                   MenuProps={MenuProps}
                 >
-                  {thead.map((name: any) => (
+                  {names.map((name: any) => (
                     <MenuItem key={name.id} value={name}>
                       {/* checked={personName.indexOf(name) > -1} */}
                       <Checkbox
@@ -148,6 +163,9 @@ export default function DSTable() {
                     );
                   }
                 })}
+                  <TableCell align="right">
+                       
+                      </TableCell>
               </TableRow>
             );
           })}
@@ -161,10 +179,10 @@ const head = [
   { id: 2, name: "KYS", checked: true, fieldName: "kys" },
   { id: 3, name: "Həkim", checked: true, fieldName: "doctor" },
   { id: 4, name: "FİN", checked: true, fieldName: "fin" },
-  { id: 6, name: "Pasientin adı", checked: true, fieldName: "pname" },
-  { id: 7, name: "Pasientin soyadı", checked: true, fieldName: "psurname" },
-  { id: 8, name: "Çağırış ünvanı", checked: true, fieldName: "address" },
-  { id: 9, name: "Rayon", checked: true, fieldName: "city" },
+  { id: 5, name: "Pasientin adı", checked: true, fieldName: "pname" },
+  { id: 6, name: "Pasientin soyadı", checked: true, fieldName: "psurname" },
+  { id: 7, name: "Çağırış ünvanı", checked: true, fieldName: "address" },
+  { id: 8, name: "Rayon", checked: true, fieldName: "city" },
 ];
 const body = [
   {
