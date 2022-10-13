@@ -20,22 +20,10 @@ import TextField from "@mui/material/TextField";
 /* Imports */
 
 /* Functions */
-function createData(
-  id: any,
-  dateTime: any,
-  kys: any,
-  doctor: any,
-  fin: any,
-  pname: any,
-  psurname: any,
-  address: any,
-  city: any
-) {
-  return { id, dateTime, kys, doctor, fin, pname, psurname, address, city };
-}
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
+
 // Drowdown menu css
 const MenuProps = {
   PaperProps: {
@@ -47,31 +35,30 @@ const MenuProps = {
 };
 
 export default function DSTable() {
+  //State
+
   const [rows, setRows] = React.useState<any>(body);
-
-  const [names, setNames] = React.useState<any>(head);
   const [thead, setThead] = React.useState(head);
-
-  const [personName, setPersonName] = React.useState<string[]>([]);
   const [open, setOpen] = React.useState(false);
 
+  //Checkbox Select Function
   const handleChange = (id: number) => {
     setThead((prev: any) => {
       return prev.map((item: any) => {
         if (item.id === id) {
           return { ...item, checked: !item.checked };
         }
-        
         return item;
       });
     });
-   
   };
 
+  //Show hide table column function
   const handleShowHideColumn: any = () => {
     setOpen(!open);
   };
 
+  //Hidden rows
   const hiddenRows = React.useMemo(() => {
     const fieldNames = thead
       .filter((item) => !item.checked)
@@ -87,28 +74,23 @@ export default function DSTable() {
     });
   }, [rows, thead]);
 
-
   React.useEffect(() => {
     const localThead = JSON.parse(localStorage.getItem("localThead") || "null");
-    console.log(localThead);
-    
     if (localThead === null) {
       localStorage.setItem("localThead", JSON.stringify(thead));
     } else {
       setThead(localThead);
     }
   }, []);
-  
-  React.useEffect(()=>{
-const localThead = JSON.parse(localStorage.getItem("localThead") || "null");
- thead.every((element:any)=>{
-  if(!element.checked){
-    localStorage.setItem('localThead',JSON.stringify(thead))
-  }
- })
- 
-  },[thead])
- 
+
+  React.useEffect(() => {
+    thead.every((element: any) => {
+      if (!element.checked) {
+        localStorage.setItem("localThead", JSON.stringify(thead));
+      }
+    });
+  }, [thead]);
+
   return (
     <TableContainer component={Paper} className="dstable-root">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -131,7 +113,7 @@ const localThead = JSON.parse(localStorage.getItem("localThead") || "null");
                   open={open}
                   onClose={handleShowHideColumn}
                   multiple
-                  value={personName}
+                  value={[]}
                   IconComponent={function () {
                     return <ShowIcon onClick={handleShowHideColumn} />;
                   }}
@@ -141,7 +123,6 @@ const localThead = JSON.parse(localStorage.getItem("localThead") || "null");
                 >
                   {thead.map((name: any) => (
                     <MenuItem key={name.id} value={name}>
-                      {/* checked={personName.indexOf(name) > -1} */}
                       <Checkbox
                         checked={name.checked}
                         onChange={() => handleChange(name.id)}
