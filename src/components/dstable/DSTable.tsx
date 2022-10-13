@@ -61,20 +61,11 @@ export default function DSTable() {
         if (item.id === id) {
           return { ...item, checked: !item.checked };
         }
+        
         return item;
       });
     });
-    setNames((prev: any) => {
-      return prev.map((item: any) => {
-       if (item.id === id) {
-          return { ...item, checked: !item.checked };
-        }
-        return item;
-      });
-    }); 
-
-    
-
+   
   };
 
   const handleShowHideColumn: any = () => {
@@ -94,14 +85,30 @@ export default function DSTable() {
       });
       return row;
     });
-   
   }, [rows, thead]);
-// React.useEffect(()=>{
-//   const newThead = thead.filter((item:any)=>item.checked === true);
-//   localStorage.setItem("user",JSON.stringify(thead));
-//  const  localStorage.getItem('user')
-// },[hiddenRows])
 
+
+  React.useEffect(() => {
+    const localThead = JSON.parse(localStorage.getItem("localThead") || "null");
+    console.log(localThead);
+    
+    if (localThead === null) {
+      localStorage.setItem("localThead", JSON.stringify(thead));
+    } else {
+      setThead(localThead);
+    }
+  }, []);
+  
+  React.useEffect(()=>{
+const localThead = JSON.parse(localStorage.getItem("localThead") || "null");
+ thead.every((element:any)=>{
+  if(!element.checked){
+    localStorage.setItem('localThead',JSON.stringify(thead))
+  }
+ })
+ 
+  },[thead])
+ 
   return (
     <TableContainer component={Paper} className="dstable-root">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -132,7 +139,7 @@ export default function DSTable() {
                   input={<OutlinedInput />}
                   MenuProps={MenuProps}
                 >
-                  {names.map((name: any) => (
+                  {thead.map((name: any) => (
                     <MenuItem key={name.id} value={name}>
                       {/* checked={personName.indexOf(name) > -1} */}
                       <Checkbox
@@ -163,9 +170,7 @@ export default function DSTable() {
                     );
                   }
                 })}
-                  <TableCell align="right">
-                       
-                      </TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             );
           })}
